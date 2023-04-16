@@ -38,15 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'crispy_forms', # pip install django-crispy-forms
-    'crispy_bootstrap4', # pip install crispy-bootstrap4
+    'crispy_forms',  # pip install django-crispy-forms  # Instalamos modulos adicionales
+    'crispy_bootstrap4',  # pip install crispy-bootstrap4  # Instalamos modulos adicionales
 ]
 
 # constantes
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
-
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"  # Configuracion para Bootstrap 4
+CRISPY_TEMPLATE_PACK = "bootstrap4"  # Configuracion para Bootstrap 4
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,9 +83,9 @@ WSGI_APPLICATION = 'AppWeb08.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ventadb',
+        'NAME': 'sistemasuni_ventadb',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

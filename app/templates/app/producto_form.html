@@ -1,32 +1,51 @@
 {% extends 'app/base.html' %}
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags %} <!-- Usamos django-crispy-forms -->
 
 {% block content %}
-<form action="" method="post" autocomplete="off">
-    {% csrf_token %}
-    {{form.descripcion|as_crispy_field}}
-    {{form.categoria|as_crispy_field}}
-    {{form.fecha|as_crispy_field}}
-    <div class="row">
-        <div class="col-md-4">
-            {{form.precio|as_crispy_field}}
-        </div>
-        <div class="col-md-8">
-            {{form.stock|as_crispy_field}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
-                Save</button>
-        </div>
-        <div class="col-md-4">
-            <a href="{% url 'producto_list' %}" class="btn btn-secondary btn-block btn-lg">
-                <i class="fas fa-stream"></i> List
-            </a>
-        </div>
-    </div>
+    <!-- {{ form.as_p }} -->
 
-</form>
+    <form action="" method="post" autocomplete="off">
+        {% csrf_token %}
 
+        {{form.descripcion|as_crispy_field}}
+        {{form.categoria|as_crispy_field}}
+        {{form.fecha|as_crispy_field}}
+
+        <div class="row">
+            <div class="col-md-4">
+                {{form.precio|as_crispy_field}}
+            </div>
+            <div class="col-md-8">
+                {{form.stock|as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                    Save
+                </button>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'producto_list' %}" class="btn btn-secondary btn-block btn-lg">
+                    <i class="fas fa-stream"></i> List
+                </a>
+            </div>
+        </div>
+    </form>
 {% endblock content %}
+
+{% block scripts %}
+    <script>
+        // Esperar a que el documento se haya cargado
+        $(function () {
+            // Usar bootstrap-select en todos los select
+            $('select').addClass('selectpicker')
+            $('select').attr({
+                'data-live-search': 'true',
+                'data-size': '6'
+            })
+            $('select').selectpicker('refresh')
+        });
+    </script>
+{% endblock scripts %}

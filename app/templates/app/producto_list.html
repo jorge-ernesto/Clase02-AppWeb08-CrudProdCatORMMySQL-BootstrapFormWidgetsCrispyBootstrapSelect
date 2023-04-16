@@ -1,43 +1,42 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
-<table class="table table-borderless">
-    <thead class="border-bottom font-weight-bold">
-        <tr>
-            <td>Descripcion</td>
-            <td>Categoria</td>
-            <td>Fecha</td>
-            <td>Precio</td>
-            <td>Stock</td>
-            <td>
-                <a href="{% url 'producto_insert' %}" class="btn btn-outline-success">
-                    <i class="fas fa-plus"></i> Add New
-                </a>
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        {% for producto in producto_list %}
-        <tr>
-            <td>{{producto.descripcion}}</td>
-            <td>{{producto.categoria}}</td>
-            <td>{{producto.fecha}}</td>
-            <td>{{producto.precio}}</td>
-            <td>{{producto.stock}}</td>
-            <td>
-                <a href="{% url 'producto_update' producto.id %}" class="btn text-secondary px-0" title="Edit">
-                    <i class="far fa-edit fa-lg"></i>
-                </a>
-                <form action="{% url 'producto_delete' producto.id %}" method="post" class="d-inline">
-                    {% csrf_token %}
-                    <button type="submit" class="btn">
-                        <i class="far fa-trash-alt fa-lg text-danger float-right" title="Delete"></i>
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+    <table class="table table-borderless">
+        <thead class="border-bottom font-weight-bold">
+            <tr>
+                <td>Descripcion</td>
+                <td>Categoria</td>
+                <td>Fecha</td>
+                <td>Precio</td>
+                <td>Stock</td>
+                <td>
+                    <a href="{% url 'producto_insert' %}" class="btn btn-outline-success">
+                        <i class="fas fa-plus"></i> Add New
+                    </a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in producto_list %}
+            <tr>
+                <td>{{producto.descripcion}}</td>
+                <td>{{producto.categoria}}</td>
+                <td>{{producto.fecha}}</td>
+                <td>{{producto.precio}}</td>
+                <td>{{producto.stock}}</td>
+                <td>
+                    <a href="{% url 'producto_update' producto.id %}" class="btn text-secondary px-0" title="Edit">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'producto_delete' producto.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right" title="Delete"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}
